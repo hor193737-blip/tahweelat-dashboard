@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل التحويلات السريع</title>
+<style>
+:root{
+  --red:#b90f24; --red2:#8f0b1b; --green:#0b6f43; --green2:#064b2f;
+  --bg:#f6f8fa; --card:#fff; --text:#17202a; --muted:#68717d; --line:#e8ebef;
+  --shadow:0 12px 30px rgba(22,34,51,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(11,111,67,.08), transparent 30%),
+    radial-gradient(circle at 95% 8%, rgba(185,15,36,.07), transparent 26%),
+    var(--bg);
+  color:var(--text);
+}
+.app{max-width:1260px;margin:auto;padding:24px}
+.header{
+  background:linear-gradient(135deg,#ffffff,#fbfcfd);
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:30px 34px;
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:22px;
+  align-items:center;
+  margin-bottom:18px;
+  overflow:hidden;
+  position:relative;
+}
+.header:before{
+  content:"";position:absolute;inset:auto -80px -100px auto;width:360px;height:360px;
+  background:radial-gradient(circle, rgba(11,111,67,.08), transparent 70%);
+}
+.logo{
+  width:96px;height:96px;border-radius:28px;
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  color:#fff;display:grid;place-items:center;font-size:46px;
+  box-shadow:0 14px 30px rgba(185,15,36,.22);
+  z-index:1;
+}
+.header-text{z-index:1}
+.header h1{margin:0;color:var(--green2);font-size:44px;font-weight:900;letter-spacing:-1px}
+.header p{margin:9px 0 0;color:#4b5563;font-size:18px;line-height:1.8}
+
+.toolbar{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:12px 0;
+  background:rgba(246,248,250,.9);
+  backdrop-filter:blur(12px);
+  margin-bottom:16px;
+}
+.search{
+  width:300px;min-width:250px;
+  display:flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:13px 16px;box-shadow:var(--shadow);
+}
+.search input{border:0;outline:0;background:transparent;width:100%;font-size:15px}
+.nav{
+  flex:1;display:flex;gap:10px;overflow-x:auto;padding-bottom:3px;
+}
+.nav button{
+  border:1px solid var(--line);background:#fff;color:#111;
+  border-radius:18px;padding:12px 16px;min-width:max-content;
+  box-shadow:0 8px 22px rgba(0,0,0,.055);
+  cursor:pointer;font-weight:800;font-size:15px;
+  display:flex;align-items:center;gap:8px;
+}
+.nav button:hover{transform:translateY(-1px)}
+.nav button.active{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}
+.ico{
+  width:33px;height:33px;border-radius:50%;
+  display:grid;place-items:center;background:#eef7f2;color:var(--green);font-size:18px
+}
+.nav button.active .ico{background:rgba(255,255,255,.18);color:#fff}
+
+.section{
+  display:none;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-bottom:18px;
+}
+.section.active{display:block}
+.section-head{
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px;
+}
+.section h2{margin:0;color:var(--green2);font-size:29px;font-weight:900}
+.section-sub{color:var(--muted);font-size:14px;margin-top:4px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}
+table{width:100%;border-collapse:collapse;min-width:700px;background:#fff}
+th{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;padding:13px;font-size:15px;text-align:center
+}
+td{border-bottom:1px solid var(--line);padding:12px;text-align:center;vertical-align:middle}
+tr:hover td{background:#fbfdfc}
+.num{direction:ltr;display:inline-block;font-weight:900;color:#111;font-size:17px}
+.copy{
+  border:0;background:#eaf7ef;color:var(--green);
+  border-radius:10px;padding:6px 9px;margin-inline-start:8px;
+  cursor:pointer;font-weight:800
+}
+.copy:hover{background:#d9f0e4}
+.pill{background:#eef7f2;color:var(--green);border-radius:999px;padding:6px 10px;font-weight:800;display:inline-block}
+.availability{font-size:13px;line-height:1.8;color:#3f4853;text-align:right;min-width:260px}
+.note{
+  background:#fff8e6;border-right:5px solid #c99821;
+  border-radius:16px;padding:14px;line-height:1.9;margin-bottom:14px;color:#373f49
+}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.empty-msg{display:none;text-align:center;color:var(--muted);padding:20px}
+.footer{
+  background:#fff;border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow);padding:16px 20px;margin-top:10px;
+  display:flex;justify-content:space-between;gap:12px;color:var(--green2);font-weight:900
+}
+@media(max-width:820px){
+  .app{padding:14px}
+  .header{grid-template-columns:1fr;text-align:center;padding:24px}
+  .logo{margin:auto}
+  .header h1{font-size:31px}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .search{width:100%}
+  .split{grid-template-columns:1fr}
+  .section-head{display:block}
+}
+</style>
+<script>
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  const btn=document.querySelector('[data-target="'+id+'"]');
+  if(btn) btn.classList.add('active');
+  document.getElementById('globalSearch').value='';
+  resetSearch();
+}
+function copyText(t){
+  navigator.clipboard.writeText(t).then(()=>alert('تم نسخ: '+t));
+}
+function resetSearch(){
+  document.querySelectorAll('tr').forEach(r=>r.style.display='');
+  document.querySelectorAll('.empty-msg').forEach(e=>e.style.display='none');
+}
+function globalSearch(){
+  const q=document.getElementById('globalSearch').value.trim().toLowerCase();
+  const active=document.querySelector('.section.active');
+  if(!active) return;
+  const rows=active.querySelectorAll('table tr');
+  let visible=0;
+  rows.forEach((r,i)=>{
+    if(i===0){r.style.display=''; return;}
+    const ok=!q || r.innerText.toLowerCase().includes(q);
+    r.style.display=ok?'':'none';
+    if(ok) visible++;
+  });
+  const msg=active.querySelector('.empty-msg');
+  if(msg) msg.style.display=(q && visible===0)?'block':'none';
+}
+</script>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="logo">☎</div>
+    <div class="header-text">
+      <h1>دليل التحويلات السريع</h1>
+      <p>مرجع داخلي للتحويلات</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">
+      <span>🔍</span>
+      <input id="globalSearch" onkeyup="globalSearch()" placeholder="بحث داخل القسم الحالي...">
+    </div>
+    <div class="nav">
+      <button class="active" data-target="sectors" onclick="showSection('sectors')"><span class="ico">🏢</span>القطاعات</button>
+      <button data-target="doctors" onclick="showSection('doctors')"><span class="ico">🩺</span>الأطباء</button>
+      <button data-target="cities" onclick="showSection('cities')"><span class="ico">🏙️</span>المناطق</button>
+      <button data-target="important" onclick="showSection('important')"><span class="ico"></span>مندوب 911 \ اخرى </button>
+      <button data-target="interpreters" onclick="showSection('interpreters')"><span class="ico">🌐</span>المترجمين</button>
+      <button data-target="translatorSteps" onclick="showSection('translatorSteps')"><span class="ico">🎧</span>ربط المترجم</button>
+      <button data-target="air" onclick="showSection('air')"><span class="ico">🚁</span>الإسعاف الجوي</button>
+    </div>
+  </div>
+
+  <section id="sectors" class="section active">
+    <div class="section-head"><div><h2>تحويلات القطاعات - منطقة الرياض</h2><div class="section-sub">اختار القطاع وانسخ الرقم مباشرة.</div></div></div>
+    <div class="table-wrap"><table>
+      <tr><th>القطاع</th><th>الرقم الأول</th><th>الرقم الثاني</th><th>نسخ</th></tr>
+      <tr><td>شرق</td><td><span class="num">15046</span></td><td><span class="num">15045</span></td><td><button class="copy" onclick="copyText('15046 15045')">نسخ</button></td></tr>
+      <tr><td>شمال</td><td><span class="num">15042</span></td><td><span class="num">15083</span></td><td><button class="copy" onclick="copyText('15042 15083')">نسخ</button></td></tr>
+      <tr><td>جنوب</td><td><span class="num">15070</span></td><td><span class="num">15056</span></td><td><button class="copy" onclick="copyText('15070 15056')">نسخ</button></td></tr>
+      <tr><td>غرب</td><td><span class="num">15048</span></td><td><span class="num">15084</span></td><td><button class="copy" onclick="copyText('15048 15084')">نسخ</button></td></tr>
+      <tr><td>وسط</td><td><span class="num">15080</span></td><td><span class="num">15032</span></td><td><button class="copy" onclick="copyText('15080 15032')">نسخ</button></td></tr>
+      <tr><td>خارجي</td><td><span class="num">15047</span></td><td><span class="num">15085</span></td><td><button class="copy" onclick="copyText('15047 15085')">نسخ</button></td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="doctors" class="section">
+    <div class="section-head"><div><h2>تحويلات الأطباء - منطقة الرياض</h2><div class="section-sub">أرقام الأطباء حسب القطاع.</div></div></div>
+    <div class="table-wrap"><table>
+      <tr><th>القطاع</th><th>الرقم</th><th>نسخ</th></tr>
+      <tr><td>شرق</td><td><span class="num">15022</span></td><td><button class="copy" onclick="copyText('15022')">نسخ</button></td></tr>
+      <tr><td>شمال</td><td><span class="num">15013</span></td><td><button class="copy" onclick="copyText('15013')">نسخ</button></td></tr>
+      <tr><td>جنوب</td><td><span class="num">15013</span></td><td><button class="copy" onclick="copyText('15013')">نسخ</button></td></tr>
+      <tr><td>غرب</td><td><span class="num">15013</span></td><td><button class="copy" onclick="copyText('15013')">نسخ</button></td></tr>
+      <tr><td>وسط</td><td><span class="num">15023</span></td><td><button class="copy" onclick="copyText('15023')">نسخ</button></td></tr>
+      <tr><td>خارجي</td><td><span class="num">15023</span></td><td><button class="copy" onclick="copyText('15023')">نسخ</button></td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="cities" class="section">
+    <div class="section-head"><div><h2>تحويلات المناطق</h2><div class="section-sub">مكة المكرمة - المدينة - الشرقية - عسير - حائل - القصيم  .</div></div></div>
+    <div class="table-wrap"><table>
+      <tr><th>المنطقة</th><th>الرقم</th><th>نسخ</th></tr>
+      <tr><td>منطقة مكة المكرمة</td><td><span class="num">8902002</span></td><td><button class="copy" onclick="copyText('8902002')">نسخ</button></td></tr>
+      <tr><td>منطقة المدينة المنورة</td><td><span class="num">8904071</span></td><td><button class="copy" onclick="copyText('8904071')">نسخ</button></td></tr>
+      <tr><td>المنطقة الشرقية</td><td><span class="num">8903171</span></td><td><button class="copy" onclick="copyText('8903171')">نسخ</button></td></tr>
+      <tr><td>منطقة عسير</td><td><span class="num">8907111</span></td><td><button class="copy" onclick="copyText('8907111')">نسخ</button></td></tr>
+      <tr><td>حائل</td><td><span class="num">1260 - 1261</span></td><td><button class="copy" onclick="copyText('1260 1261')">نسخ</button></td></tr>
+      <tr><td>القصيم</td><td><span class="num">1168 - 1170</span></td><td><button class="copy" onclick="copyText('1168 1170')">نسخ</button></td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="important" class="section">
+    <div class="section-head"><div><h2>تحويلات / 911 / اخرى </h2><div class="section-sub">أرقام مهمة للوصول السريع.</div></div></div>
+    <div class="table-wrap"><table>
+      <tr><th>الجهة</th><th>الرقم</th><th>نسخ</th></tr>
+      <tr><td>مندوب الهلال الموحدة 911</td><td><span class="num">0112941151</span></td><td><button class="copy" onclick="copyText('0112941151')">نسخ</button></td></tr>
+      <tr><td>إسعاف المطار</td><td><span class="num">0112219395</span></td><td><button class="copy" onclick="copyText('0112219395')">نسخ</button></td></tr>
+      <tr><td>إسعاف جامعة الملك سعود</td><td><span class="num">0114699999</span></td><td><button class="copy" onclick="copyText('0114699999')">نسخ</button></td></tr>
+      <tr><td>إسعاف الحرس الوطني</td><td><span class="num">0118019989</span></td><td><button class="copy" onclick="copyText('0118019989')">نسخ</button></td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="interpreters" class="section">
+    <div class="section-head"><div><h2>قائمة المترجمين</h2><div class="section-sub">ابحث بالاسم، اللغة، رقم الجوال، أو المواعيد المتاحة.</div></div></div>
+    <div class="table-wrap"><table>
+      <tr><th>الاسم الثلاثي</th><th>رقم الجوال</th><th>اللغة</th><th>المواعيد المتاحة</th></tr>
+      
+<tr>
+  <td class="name">سرى سامي البليهي</td>
+  <td class="phone"><span class="num">507923264
+</span><button class="copy" onclick="copyText('507923264')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية - التركية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">رغده صالح اللحيدان</td>
+  <td class="phone"><span class="num">538376283</span><button class="copy" onclick="copyText('538376283')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">مربن حماد النصية</td>
+  <td class="phone"><span class="num">546134572
+</span><button class="copy" onclick="copyText('546134572 
+')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية - الروسية </span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">ثارة غانم الغاذ</td>
+  <td class="phone"><span class="num">559904548</span><button class="copy" onclick="copyText('559904548')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية - الأوردو</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">عبيد اللّه بن أبو بكر عبداللّه جلال المحمود</td>
+  <td class="phone"><span class="num">535644525</span><button class="copy" onclick="copyText('535644525')">نسخ</button></td>
+  <td><span class="pill">البنغالية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">نوره سالم الصنيخ</td>
+  <td class="phone"><span class="num">576780483</span><button class="copy" onclick="copyText('576780483')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">شوق عبدالعزيز العمر</td>
+  <td class="phone"><span class="num">549449079</span><button class="copy" onclick="copyText('549449079')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية </span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">ديم عبد العزيز الشمالي</td>
+  <td class="phone"><span class="num">503080649</span><button class="copy" onclick="copyText('503080649')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">مهدي علي الحاجي احمد</td>
+  <td class="phone"><span class="num">536501096</span><button class="copy" onclick="copyText('536501096')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">ياسر بن سعد ابونيان</td>
+  <td class="phone"><span class="num">544761977</span><button class="copy" onclick="copyText('544761977')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">لمى</td>
+  <td class="phone"><span class="num">548249176</span><button class="copy" onclick="copyText('548249176')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">البدر هادي القحطاني</td>
+  <td class="phone"><span class="num">551953153</span><button class="copy" onclick="copyText('551953153')">نسخ</button></td>
+  <td><span class="pill">التركية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">سخاء محمود جاوي</td>
+  <td class="phone"><span class="num">ا595740666</span><button class="copy" onclick="copyText('595740666')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">أسماء علي الضويعن</td>
+  <td class="phone"><span class="num">542648793</span><button class="copy" onclick="copyText('542648793')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">عجايب حمدان محمد</td>
+  <td class="phone"><span class="num">509894480</span><button class="copy" onclick="copyText('509894480')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">أنس عثمان القرني</td>
+  <td class="phone"><span class="num">561243811</span><button class="copy" onclick="copyText('561243811')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">لمى فرحان الحيسوني</td>
+  <td class="phone"><span class="num">535202634</span><button class="copy" onclick="copyText('535202634')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">علي عبده نمازي</td>
+  <td class="phone"><span class="num">581077704</span><button class="copy" onclick="copyText('581077704')">نسخ</button></td>
+  <td><span class="pill">الأوردو</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">مشاعل جاسر الجاسر</td>
+  <td class="phone"><span class="num">506622815</span><button class="copy" onclick="copyText('506622815')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">حسين محمد رمضان</td>
+  <td class="phone"><span class="num">550114471</span><button class="copy" onclick="copyText('550114471')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية، الأوردو، الهندي</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">أشواق محمد عطية</td>
+  <td class="phone"><span class="num">562471303</span><button class="copy" onclick="copyText('562471303')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">شادن مرزوق الشرهان</td>
+  <td class="phone"><span class="num">539660047</span><button class="copy" onclick="copyText('539660047')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">عبد العزيز بركت اللّٰه</td>
+  <td class="phone"><span class="num">595116277</span><button class="copy" onclick="copyText('الأوردو، الهندي')">نسخ</button></td>
+  <td><span class="pill">الأوردو، الهندي</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">منيرة محمد درع القحطائي</td>
+  <td class="phone"><span class="num">553162026</span><button class="copy" onclick="copyText('553162026')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">رهف مانع القحطاني</td>
+  <td class="phone"><span class="num">507437089</span><button class="copy" onclick="copyText('507437089')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">أثير حسن الشيخي</td>
+  <td class="phone"><span class="num">556803535</span><button class="copy" onclick="copyText('556803535')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">جوري بنت عبد الرحمن المرشد</td>
+  <td class="phone"><span class="num">539758365</span><button class="copy" onclick="copyText('539758365')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+<tr>
+  <td class="name">رهف صالح العبد اللطيف</td>
+  <td class="phone"><span class="num">566097464</span><button class="copy" onclick="copyText('566097464')">نسخ</button></td>
+  <td><span class="pill">الإنجليزية</span></td>
+  <td class="availability"></td>
+</tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="translatorSteps" class="section">
+    <div class="section-head"><div><h2>خطوات ربط مترجم أثناء المكالمة على Avaya</h2><div class="section-sub">خطوات مختصرة لدمج المترجم مع المكالمة.</div></div></div>
+    <div class="note">أثناء المكالمة اضغط Conf، ثم اتصل بالمترجم، وبعد الرد   ،تأكد من الأطراف اضغط Join.</div>
+    <div class="table-wrap"><table>
+      <tr><th>الخطوة</th><th>الإجراء</th></tr>
+      <tr><td>1</td><td>اضغط زر <b>Conf / Conference</b>.</td></tr>
+      <tr><td>2</td><td>اضغط 9 ثم رقم المترجم.</td></tr>
+      <tr><td>3</td><td>انتظر حتى يرد المترجم.</td></tr>
+      <tr><td>4</td><td>عرّف نفسك للمترجم وتأكد من وجود جميع الأطراف.</td></tr>
+      <tr><td>5</td><td>اضغط <b>Join</b> لدمج المكالمة.</td></tr>
+      <tr><td>6</td><td>تم ربط المترجم ويمكن البدء بالترجمة وجمع المعلومات.</td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <section id="air" class="section">
+    <div class="section-head"><div><h2>الإسعاف الجوي</h2><div class="section-sub">متى يُنظر في طلب الإسعاف الجوي.</div></div></div>
+    <div class="note"> رقم تحويله 5050 / فكّر بالإسعاف الجوي إذا كانت الحالة مهددة للحياة، أو زمن الوصول البري طويل، أو الموقع صعب الوصول، أو تحتاج نقل سريع .</div>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>الحالة</th></tr>
+      <tr><td>1</td><td>توقف تنفس أو إنعاش قلبي رئوي CPR.</td></tr>
+      <tr><td>3</td><td>ضيق تنفس شديد أو فشل تنفسي.</td></tr>
+      <tr><td>4</td><td>ألم صدر حاد أو اشتباه جلطة قلبية.</td></tr>
+      <tr><td>5</td><td>سكتة دماغية مشتبه بها.</td></tr>
+      <tr><td>6</td><td>نزيف حاد غير مسيطر عليه.</td></tr>
+      <tr><td>7</td><td>حروق واسعة أو انفجار.</td></tr>
+      <tr><td>8</td><td>سقوط من ارتفاع عالٍ، خصوصًا أكثر من 10 م.</td></tr>
+      <tr><td>9</td><td>حوادث مرورية أو إصابات عالية الخطورة.</td></tr>
+      <tr><td>10</td><td>إصابة خطيرة بالصدر أو الرقبة.</td></tr>
+      <tr><td>11</td><td>عدة إصابات أو عدة ضحايا.</td></tr>
+      <tr><td>12</td><td>احتجاز أو انحشار بموقع يصعب الوصول إليه.</td></tr>
+      <tr><td>13</td><td>غرق .</td></tr>
+      <tr><td>14</td><td>صعق كهربائي أو برق.</td></tr>
+    </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
+  </section>
+
+  <div class="footer">
+    <span>مرجع داخلي لمركز الترحيل الطبي المنطقة الوسطى</span>
+    <span>الإنسانية - الشغف - الإتقان</span>
+  </div>
+</div>
+</body>
+</html>
