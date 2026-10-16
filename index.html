@@ -201,7 +201,7 @@ function globalSearch(){
       <button data-target="interpreters" onclick="showSection('interpreters')"><span class="ico">🌐</span>المترجمين</button>
       <button data-target="translatorSteps" onclick="showSection('translatorSteps')"><span class="ico">🎧</span>ربط المترجم</button>
       <button data-target="air" onclick="showSection('air')"><span class="ico">🚁</span>الإسعاف الجوي</button>
-    </div>
+    </div><button data-target="emergencyCodes" onclick="showSection('emergencyCodes')"><span class="ico">📋</span>أكواد الحالات</button>
   </div>
 <tr><td><button class="button" onclick="copyText('22')">نسخ</button></td><td class="num">22</td><td>Inaccessible Incident / Other Entrapments (Non-Vehicle)</td><td>حادث يصعب الوصول إليه / احتجاز (غير مركب)</td></tr>
     <tr><td><button class="button" onclick="copyText('23')">نسخ</button></td><td class="num">23</td><td>Overdose / Poisoning (Ingestion)</td><td>جرعة زائدة / تسمم (ابتلاع)</td></tr>
@@ -510,6 +510,53 @@ function globalSearch(){
       <tr><td>14</td><td>صعق كهربائي أو برق.</td></tr>
     </table></div><div class="empty-msg">لا توجد نتائج مطابقة.</div>
   </section>
+
+<section id="emergencyCodes" class="section">
+  <div class="section-head">
+    <div>
+      <h2>أكواد الحالات الطبية</h2>
+      <div class="section-sub">ابحثي برقم الكود أو اسم الحالة، واضغطي نسخ.</div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>نسخ</th><th>الكود</th><th>الحالة</th></tr>
+      <tr><td><button class="copy" onclick="copyText('01')">نسخ</button></td><td class="num">01</td><td>ألم / مشاكل البطن</td></tr>
+      <tr><td><button class="copy" onclick="copyText('02')">نسخ</button></td><td class="num">02</td><td>حساسية / تسمم (لدغة، عضّة)</td></tr>
+      <tr><td><button class="copy" onclick="copyText('03')">نسخ</button></td><td class="num">03</td><td>هجوم / عضّة حيوان</td></tr>
+      <tr><td><button class="copy" onclick="copyText('04')">نسخ</button></td><td class="num">04</td><td>اعتداء / اعتداء جنسي / مسدس الصعقة الكهربائية</td></tr>
+      <tr><td><button class="copy" onclick="copyText('05')">نسخ</button></td><td class="num">05</td><td>ألم الظهر غير المرتبط بإصابة أو إصابة قديمة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('06')">نسخ</button></td><td class="num">06</td><td>مشاكل التنفس</td></tr>
+      <tr><td><button class="copy" onclick="copyText('07')">نسخ</button></td><td class="num">07</td><td>حروق / انفجار</td></tr>
+      <tr><td><button class="copy" onclick="copyText('08')">نسخ</button></td><td class="num">08</td><td>أول أكسيد الكربون / استنشاق / مواد خطرة أو كيميائية أو مشعة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('09')">نسخ</button></td><td class="num">09</td><td>توقف القلب أو التنفس / موت</td></tr>
+      <tr><td><button class="copy" onclick="copyText('10')">نسخ</button></td><td class="num">10</td><td>ألم الصدر / ضيق الصدر غير المرتبط بإصابة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('11')">نسخ</button></td><td class="num">11</td><td>اختناق</td></tr>
+      <tr><td><button class="copy" onclick="copyText('12')">نسخ</button></td><td class="num">12</td><td>تشنجات / نوبة مرضية</td></tr>
+      <tr><td><button class="copy" onclick="copyText('13')">نسخ</button></td><td class="num">13</td><td>مشاكل مرض السكري</td></tr>
+      <tr><td><button class="copy" onclick="copyText('14')">نسخ</button></td><td class="num">14</td><td>غرق / على وشك الغرق / غطس / حادثة غوص</td></tr>
+      <tr><td><button class="copy" onclick="copyText('15')">نسخ</button></td><td class="num">15</td><td>صعق بالكهرباء / البرق</td></tr>
+      <tr><td><button class="copy" onclick="copyText('16')">نسخ</button></td><td class="num">16</td><td>مشاكل / إصابات العين</td></tr>
+      <tr><td><button class="copy" onclick="copyText('17')">نسخ</button></td><td class="num">17</td><td>سقوط</td></tr>
+      <tr><td><button class="copy" onclick="copyText('18')">نسخ</button></td><td class="num">18</td><td>صداع</td></tr>
+      <tr><td><button class="copy" onclick="copyText('19')">نسخ</button></td><td class="num">19</td><td>مشاكل القلب / وحدة إنعاش قلب مزروعة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('20')">نسخ</button></td><td class="num">20</td><td>التعرض لحرارة أو برودة شديدة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('21')">نسخ</button></td><td class="num">21</td><td>نزيف / تمزق</td></tr>
+      <tr><td><button class="copy" onclick="copyText('22')">نسخ</button></td><td class="num">22</td><td>حادثة يصعب الوصول إليها / احتجاز غير مروري</td></tr>
+      <tr><td><button class="copy" onclick="copyText('23')">نسخ</button></td><td class="num">23</td><td>جرعة زائدة / تسمم بالابتلاع</td></tr>
+      <tr><td><button class="copy" onclick="copyText('24')">نسخ</button></td><td class="num">24</td><td>الحمل / الولادة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('25')">نسخ</button></td><td class="num">25</td><td>مريض نفسي / أمراض صحة عقلية / محاولة انتحار / سلوك غير عادي</td></tr>
+      <tr><td><button class="copy" onclick="copyText('26')">نسخ</button></td><td class="num">26</td><td>شخص مريض (تشخيص محدد)</td></tr>
+      <tr><td><button class="copy" onclick="copyText('27')">نسخ</button></td><td class="num">27</td><td>طعن بسكين / إصابة بطلق ناري / إصابة نافذة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('28')">نسخ</button></td><td class="num">28</td><td>سكتة دماغية / نوبة دماغية عابرة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('29')">نسخ</button></td><td class="num">29</td><td>تصادم مروري / حادثة مواصلات</td></tr>
+      <tr><td><button class="copy" onclick="copyText('30')">نسخ</button></td><td class="num">30</td><td>إصابات محددة</td></tr>
+      <tr><td><button class="copy" onclick="copyText('31')">نسخ</button></td><td class="num">31</td><td>غياب عن الوعي / إغماء أو شبه إغماء</td></tr>
+      <tr><td><button class="copy" onclick="copyText('32')">نسخ</button></td><td class="num">32</td><td>مشكلة غير معروفة (شخص مصاب)</td></tr>
+    </table>
+  </div>
+  <div class="empty-msg">لا توجد نتائج مطابقة.</div>
+</section>
 
   <div class="footer">
     <span>مرجع داخلي لمركز الترحيل الطبي المنطقة الوسطى</span>
